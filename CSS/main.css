@@ -1,0 +1,50 @@
+*
+
+/* Grundinställning */
+    {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Färger */
+:root {
+    --dark-green: #006633;
+    --light-green: #c3d774;
+    --gold: #947a16;
+    --cream: #fee3bf;
+    --white: #ffffff;
+    --dark-text: #222222;
+}
+
+/* Body */
+body {
+    font-family: Helvetica, sans-serif;
+    background-color: var(--white);
+    color: var(--dark-text);
+}
+
+/* Rubriker */
+h1,
+h2,
+h3 {
+    font-family: Verdana, sans-serif;
+}
+
+/* Logotyp */
+.top-header {
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 30px;
+background-color:var(--white);
+}
+
+/* Placeholder:n */
+.logo-placeholder {
+    color: var(--dark-green);
+    font-size: 42px;
+    letter-spacing: 4px;
+}
+
+/* Navigation */
