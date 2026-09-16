@@ -1,50 +1,336 @@
-*
+/* Grund */
 
-/* Grundinställning */
-    {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
 }
 
-/* Färger */
-:root {
-    --dark-green: #006633;
-    --light-green: #c3d774;
-    --gold: #947a16;
-    --cream: #fee3bf;
-    --white: #ffffff;
-    --dark-text: #222222;
-}
-
-/* Body */
+html,
 body {
-    font-family: Helvetica, sans-serif;
-    background-color: var(--white);
-    color: var(--dark-text);
+  margin: 0;
+  padding: 0;
 }
 
-/* Rubriker */
+body {
+  font-family: Helvetica, sans-serif;
+  color: #006633;
+}
+
 h1,
 h2,
 h3 {
-    font-family: Verdana, sans-serif;
+  font-family: Verdana, sans-serif;
 }
 
-/* Logotyp */
-.top-header {
-display: flex;
-justify-content: center;
-align-items: center;
-padding: 30px;
-background-color:var(--white);
+/* Header */
+
+header {
+  text-align: center;
+  padding: 30px;
 }
 
-/* Placeholder:n */
-.logo-placeholder {
-    color: var(--dark-green);
-    font-size: 42px;
-    letter-spacing: 4px;
+header h1 {
+  margin: 0;
+  font-size: 42px;
 }
 
 /* Navigation */
+
+nav {
+  width: fit-content;
+  margin: 0 auto 30px auto;
+
+  display: flex;
+  gap: 50px;
+
+  background-color: #006633;
+
+  padding: 10px 35px;
+
+  border-radius: 30px;
+
+  position: relative;
+  z-index: 4;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+
+  padding: 10px 16px;
+
+  border-radius: 20px;
+
+  font-weight: bold;
+}
+
+nav a:hover {
+  background-color: #c3d774;
+  color: #006633;
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+  height: 780px;
+
+  overflow: hidden;
+
+  z-index: 1;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
+}
+
+/* Hero fade */
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 400px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 1)
+  );
+
+  z-index: 1;
+}
+
+/* Hero text */
+
+.hero-content {
+  position: absolute;
+
+  top: 170px;
+  left: 9%;
+
+  max-width: 450px;
+
+  color: white;
+
+  z-index: 2;
+}
+
+.hero-content h2 {
+  margin: 0 0 15px 0;
+
+  font-size: 46px;
+  line-height: 1.15;
+
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.hero-content p {
+  max-width: 400px;
+
+  margin-bottom: 25px;
+
+  font-size: 19px;
+  line-height: 1.5;
+
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.hero-button {
+  display: inline-block;
+
+  background-color: #006633;
+  color: white;
+
+  text-decoration: none;
+
+  padding: 13px 24px;
+
+  border-radius: 22px;
+
+  font-weight: bold;
+}
+
+.hero-button:hover {
+  background-color: #c3d774;
+  color: #006633;
+}
+
+/* Delade sektioner */
+
+.split {
+  display: flex;
+
+  position: relative;
+
+  margin-top: -100px;
+
+  z-index: 2;
+}
+
+.left,
+.right {
+  width: 50%;
+  min-height: 450px;
+
+  padding: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.left {
+  background-image: url("../Bilder/bakgrund_1.png");
+  background-size: 80%;
+}
+
+.right {
+  background-image: url("../Bilder/bakgrund_2.png");
+  background-size: 80%;
+}
+
+/* Text */
+
+.content {
+  max-width: 420px;
+}
+
+.content h2 {
+  font-size: 34px;
+
+  margin-bottom: 15px;
+}
+
+.content p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Knappar */
+
+.button {
+  display: inline-block;
+
+  background-color: #006633;
+  color: white;
+
+  text-decoration: none;
+
+  padding: 12px 22px;
+
+  margin-top: 10px;
+
+  border-radius: 20px;
+}
+
+.button:hover {
+  background-color: #947a16;
+}
+
+/* Footer */
+
+footer {
+  background-color: #006633;
+  color: white;
+
+  text-align: center;
+
+  padding: 35px;
+
+  margin: 0;
+}
+
+footer h2 {
+  margin-top: 0;
+}
+
+footer p:last-child {
+  margin-bottom: 0;
+}
+
+/* Undersidor */
+
+.page {
+  min-height: 500px;
+
+  padding: 60px 10%;
+}
+
+.page h1 {
+  font-size: 38px;
+}
+
+.page p {
+  max-width: 650px;
+
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Mobil */
+
+@media (max-width: 750px) {
+  nav {
+    flex-direction: column;
+
+    gap: 5px;
+
+    text-align: center;
+
+    margin-bottom: -20px;
+  }
+
+  .hero {
+    height: 600px;
+  }
+
+  .hero-content {
+    top: 120px;
+    left: 8%;
+    right: 8%;
+
+    max-width: none;
+  }
+
+  .hero-content h2 {
+    font-size: 34px;
+  }
+
+  .hero-content p {
+    font-size: 17px;
+  }
+
+  .split {
+    display: block;
+
+    margin-top: -50px;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+
+    min-height: 350px;
+
+    background-size: 75%;
+  }
+}
