@@ -12,7 +12,10 @@ body {
 
 body {
   font-family: Helvetica, sans-serif;
+
   color: #006633;
+
+  background-color: white;
 }
 
 h1,
@@ -21,15 +24,25 @@ h3 {
   font-family: Verdana, sans-serif;
 }
 
+p {
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+}
+
 /* Header */
 
 header {
   text-align: center;
+
   padding: 30px;
 }
 
 header h1 {
   margin: 0;
+
   font-size: 42px;
 }
 
@@ -37,23 +50,31 @@ header h1 {
 
 nav {
   width: fit-content;
+
   margin: 0 auto 30px auto;
 
   display: flex;
+
   gap: 50px;
 
-  background-color: #006633;
-
   padding: 10px 35px;
+
+  background-color: #006633;
 
   border-radius: 30px;
 
   position: relative;
-  z-index: 4;
+
+  z-index: 10;
+
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 nav a {
   color: white;
+
   text-decoration: none;
 
   padding: 10px 16px;
@@ -61,24 +82,33 @@ nav a {
   border-radius: 20px;
 
   font-weight: bold;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
-nav a:hover {
+nav a:hover,
+nav a.active {
   background-color: #c3d774;
+
   color: #006633;
 }
 
-/* Hero */
+nav.nav-scrolled {
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.16);
+}
+
+/* Hero startsida */
 
 .hero {
   position: relative;
 
   width: 100%;
+
   height: 780px;
 
   overflow: hidden;
-
-  z-index: 1;
 }
 
 .hero img {
@@ -90,8 +120,6 @@ nav a:hover {
 
   display: block;
 }
-
-/* Hero fade */
 
 .hero::after {
   content: "";
@@ -129,12 +157,15 @@ nav a:hover {
   color: white;
 
   z-index: 2;
+
+  animation: heroFade 0.8s ease;
 }
 
 .hero-content h2 {
   margin: 0 0 15px 0;
 
   font-size: 46px;
+
   line-height: 1.15;
 
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
@@ -146,39 +177,59 @@ nav a:hover {
   margin-bottom: 25px;
 
   font-size: 19px;
-  line-height: 1.5;
 
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
+/* Knappar */
+
+.button,
 .hero-button {
   display: inline-block;
 
+  padding: 12px 22px;
+
   background-color: #006633;
+
   color: white;
 
   text-decoration: none;
 
-  padding: 13px 24px;
-
   border-radius: 22px;
 
   font-weight: bold;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.button {
+  margin-top: 10px;
+}
+
+.button:hover,
+.hero-button:hover {
+  background-color: #947a16;
+
+  transform: translateY(-2px);
 }
 
 .hero-button:hover {
   background-color: #c3d774;
+
   color: #006633;
 }
 
-/* Delade sektioner */
+/* Startsidans första sektion */
 
 .split {
   display: flex;
 
   position: relative;
 
-  margin-top: -100px;
+  margin-top: 40px;
 
   z-index: 2;
 }
@@ -186,11 +237,13 @@ nav a:hover {
 .left,
 .right {
   width: 50%;
+
   min-height: 450px;
 
   padding: 50px;
 
   display: flex;
+
   justify-content: center;
   align-items: center;
 
@@ -200,15 +253,15 @@ nav a:hover {
 
 .left {
   background-image: url("../Bilder/bakgrund_1.png");
+
   background-size: 80%;
 }
 
 .right {
   background-image: url("../Bilder/bakgrund_2.png");
+
   background-size: 80%;
 }
-
-/* Text */
 
 .content {
   max-width: 420px;
@@ -222,41 +275,749 @@ nav a:hover {
 
 .content p {
   font-size: 18px;
-  line-height: 1.6;
 }
 
-/* Knappar */
+/* Gemensamma rubriker */
 
-.button {
-  display: inline-block;
+.small-title {
+  margin-bottom: 8px;
+
+  font-size: 13px;
+
+  letter-spacing: 2px;
+
+  font-weight: bold;
+}
+
+.section-heading {
+  max-width: 700px;
+
+  margin: 0 auto 55px auto;
+
+  text-align: center;
+}
+
+.section-heading h2 {
+  margin: 5px 0 15px 0;
+
+  font-size: 38px;
+}
+
+.section-heading p {
+  font-size: 18px;
+}
+
+/* Varför Sundora */
+
+.why-section {
+  width: 90%;
+
+  max-width: 1200px;
+
+  margin: 110px auto;
+}
+
+.why-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+}
+
+/* Grundpelare och varför-kort */
+
+.value-card,
+.why-card {
+  position: relative;
+
+  min-height: 280px;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+
+  border-radius: 28px;
+
+  background-color: white;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.value-card:hover,
+.why-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Grafiska bakgrunder */
+
+.card-background {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  z-index: 1;
+}
+
+.card-background img {
+  width: 95%;
+  height: 95%;
+
+  object-fit: contain;
+
+  opacity: 0.9;
+
+  transition: transform 0.4s ease;
+}
+
+.value-card:hover .card-background img,
+.why-card:hover .card-background img {
+  transform: scale(1.05);
+}
+
+/* Kortfärger */
+
+.value-one,
+.why-one {
+  background-color: #ffffff;
+}
+
+.value-two,
+.why-two {
+  background-color: #ffffff;
+}
+
+.value-three,
+.why-three {
+  background-color: #fee3bf;
+}
+
+/* Justerad färg på tredje grafiken */
+
+.value-three .card-background img,
+.why-three .card-background img {
+  filter: hue-rotate(28deg) saturate(0.75);
+}
+
+/* Korttext */
+
+.value-content,
+.why-content {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 310px;
+
+  padding: 35px;
+}
+
+.value-content h3,
+.why-content h3 {
+  margin: 10px 0;
+
+  font-size: 25px;
+}
+
+.value-content p,
+.why-content p {
+  color: #173c29;
+}
+
+.value-number {
+  color: #947a16;
+
+  font-weight: bold;
+}
+
+/* Startsida inspiration */
+
+.home-inspiration {
+  width: 90%;
+
+  max-width: 1200px;
+
+  min-height: 420px;
+
+  margin: 110px auto;
+
+  display: flex;
+
+  background-color: #fee3bf;
+
+  border-radius: 35px;
+
+  overflow: hidden;
+}
+
+.home-inspiration-text,
+.home-inspiration-graphic {
+  width: 50%;
+}
+
+.home-inspiration-text {
+  padding: 60px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.home-inspiration-text h2 {
+  margin: 5px 0 15px 0;
+
+  font-size: 36px;
+}
+
+.home-inspiration-text p {
+  color: #333;
+}
+
+.home-inspiration-graphic {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.home-inspiration-graphic img {
+  width: 70%;
+
+  transition: transform 0.4s ease;
+}
+
+.home-inspiration:hover .home-inspiration-graphic img {
+  transform: scale(1.04);
+}
+
+/* Startsida CTA */
+
+.home-cta {
+  width: 90%;
+
+  max-width: 1200px;
+
+  margin: 110px auto;
+
+  padding: 55px 60px;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 30px;
 
   background-color: #006633;
+
   color: white;
 
-  text-decoration: none;
-
-  padding: 12px 22px;
-
-  margin-top: 10px;
-
-  border-radius: 20px;
+  border-radius: 30px;
 }
 
-.button:hover {
-  background-color: #947a16;
+.home-cta h2 {
+  margin: 5px 0 10px 0;
+
+  font-size: 34px;
+}
+
+.home-cta p {
+  max-width: 600px;
+
+  margin-bottom: 0;
+}
+
+.home-cta .button,
+.page-cta .button {
+  background-color: #c3d774;
+
+  color: #006633;
+}
+
+.home-cta .button:hover,
+.page-cta .button:hover {
+  background-color: #fee3bf;
+}
+
+/* Undersidornas hero */
+
+.page-hero {
+  width: 90%;
+
+  max-width: 1400px;
+
+  min-height: 360px;
+
+  margin: 20px auto 80px auto;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  border-radius: 35px;
+}
+
+.page-hero-text {
+  position: relative;
+
+  max-width: 620px;
+
+  padding: 70px;
+
+  z-index: 3;
+}
+
+.page-hero h1 {
+  margin: 5px 0 20px 0;
+
+  font-size: 48px;
+
+  line-height: 1.15;
+}
+
+.page-hero p {
+  max-width: 560px;
+
+  font-size: 19px;
+}
+
+/* Hero bild på produkter och Om */
+
+.products-page,
+.about-page {
+  color: white;
+}
+
+.products-page img,
+.about-page > img {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.products-page img {
+  object-position: center;
+}
+
+.about-page > img {
+  object-position: center;
+}
+
+.page-hero-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background-color: rgba(0, 60, 30, 0.4);
+
+  z-index: 1;
+}
+
+.products-page .small-title,
+.about-page .small-title {
+  color: #c3d774;
+}
+
+/* Inspiration hero */
+
+.inspiration-page {
+  background-color: #fee3bf;
+}
+
+/* Produkter */
+
+.products {
+  width: 90%;
+
+  max-width: 1300px;
+
+  margin: 0 auto;
+
+  padding-bottom: 90px;
+}
+
+.product-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+}
+
+.product-card {
+  overflow: hidden;
+
+  background-color: white;
+
+  border: 1px solid #e1e1e1;
+
+  border-radius: 28px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  height: 260px;
+
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.04);
+}
+
+.product-info {
+  padding: 30px;
+}
+
+.product-info h2 {
+  margin: 4px 0 12px 0;
+
+  font-size: 27px;
+}
+
+.product-info p {
+  color: #333;
+}
+
+.product-type {
+  margin: 0;
+
+  color: #947a16 !important;
+
+  font-size: 12px;
+
+  font-weight: bold;
+
+  letter-spacing: 1.5px;
+}
+
+.product-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin: 20px 0;
+}
+
+.product-tags span {
+  padding: 7px 12px;
+
+  background-color: #eef3da;
+
+  border-radius: 15px;
+
+  font-size: 13px;
+}
+
+details {
+  margin-top: 20px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #dddddd;
+}
+
+summary {
+  cursor: pointer;
+
+  font-weight: bold;
+
+  color: #006633;
+}
+
+.nutrition {
+  padding-top: 10px;
+}
+
+.nutrition p {
+  margin: 5px 0;
+
+  font-size: 14px;
+}
+
+/* Inspiration */
+
+.inspiration-content {
+  width: 90%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding-bottom: 90px;
+}
+
+.article-grid {
+  display: grid;
+
+  gap: 25px;
+
+  margin-bottom: 80px;
+}
+
+.article-card {
+  min-height: 210px;
+
+  padding: 30px;
+
+  display: grid;
+
+  grid-template-columns: 130px 1fr;
+
+  align-items: center;
+
+  border-bottom: 1px solid #dddddd;
+
+  transition: background-color 0.3s ease;
+}
+
+.article-card:hover {
+  background-color: #fafaf6;
+}
+
+.article-number {
+  font-family: Verdana, sans-serif;
+
+  font-size: 52px;
+
+  color: #c3d774;
+
+  font-weight: bold;
+}
+
+.article-text {
+  max-width: 750px;
+}
+
+.article-text h2 {
+  margin: 5px 0 10px 0;
+
+  font-size: 30px;
+}
+
+.article-text p {
+  color: #333;
+}
+
+.inspiration-highlight {
+  min-height: 420px;
+
+  display: flex;
+
+  background-color: #fee3bf;
+
+  border-radius: 35px;
+
+  overflow: hidden;
+}
+
+.highlight-text,
+.highlight-shape {
+  width: 50%;
+}
+
+.highlight-text {
+  padding: 65px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.highlight-text h2 {
+  margin: 5px 0 15px 0;
+
+  font-size: 36px;
+}
+
+.highlight-shape {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.highlight-shape img {
+  width: 75%;
+
+  transition: transform 0.4s ease;
+}
+
+.inspiration-highlight:hover .highlight-shape img {
+  transform: scale(1.04);
+}
+
+/* Om Sundora */
+
+.about-content {
+  width: 90%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding-bottom: 90px;
+}
+
+.about-intro {
+  display: flex;
+
+  align-items: center;
+
+  gap: 60px;
+
+  margin-bottom: 100px;
+}
+
+.about-text,
+.about-graphic {
+  width: 50%;
+}
+
+.about-text h2 {
+  margin: 5px 0 20px 0;
+
+  font-size: 38px;
+}
+
+.about-text p {
+  color: #333;
+
+  font-size: 18px;
+}
+
+.about-graphic {
+  min-height: 400px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: #f7f7f2;
+
+  border-radius: 35px;
+}
+
+.about-graphic img {
+  width: 75%;
+
+  transition: transform 0.4s ease;
+}
+
+.about-graphic:hover img {
+  transform: scale(1.04);
+}
+
+/* Grundpelare */
+
+.values {
+  margin-bottom: 90px;
+}
+
+.values-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+}
+
+/* CTA undersidor */
+
+.page-cta {
+  min-height: 240px;
+
+  margin-top: 80px;
+
+  padding: 50px 60px;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 30px;
+
+  background-color: #006633;
+
+  color: white;
+
+  border-radius: 30px;
+}
+
+.page-cta h2 {
+  margin: 5px 0 8px 0;
+
+  font-size: 32px;
+}
+
+.page-cta p {
+  max-width: 600px;
+
+  margin-bottom: 0;
 }
 
 /* Footer */
 
 footer {
-  background-color: #006633;
-  color: white;
-
-  text-align: center;
+  margin: 0;
 
   padding: 35px;
 
-  margin: 0;
+  background-color: #006633;
+
+  color: white;
+
+  text-align: center;
 }
 
 footer h2 {
@@ -267,37 +1028,104 @@ footer p:last-child {
   margin-bottom: 0;
 }
 
-/* Undersidor */
+/* Scroll animation */
 
-.page {
-  min-height: 500px;
+.reveal {
+  opacity: 0;
 
-  padding: 60px 10%;
+  transform: translateY(35px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
-.page h1 {
-  font-size: 38px;
+.reveal.visible {
+  opacity: 1;
+
+  transform: translateY(0);
 }
 
-.page p {
-  max-width: 650px;
+/* Hero animation */
 
-  font-size: 18px;
-  line-height: 1.6;
+@keyframes heroFade {
+  from {
+    opacity: 0;
+
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+  nav {
+    gap: 20px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .values-grid,
+  .why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .value-card:last-child,
+  .why-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .hero {
+    height: 680px;
+  }
 }
 
 /* Mobil */
 
 @media (max-width: 750px) {
+  header {
+    padding: 25px 15px;
+  }
+
+  header h1 {
+    font-size: 34px;
+  }
+
+  /* Navigation */
+
   nav {
-    flex-direction: column;
+    width: 88%;
+
+    margin-bottom: 25px;
+
+    padding: 8px 12px;
 
     gap: 5px;
 
-    text-align: center;
+    justify-content: center;
 
-    margin-bottom: -20px;
+    flex-wrap: wrap;
   }
+
+  nav a {
+    padding: 9px 12px;
+
+    font-size: 14px;
+  }
+
+  /* Startsida */
 
   .hero {
     height: 600px;
@@ -305,6 +1133,7 @@ footer p:last-child {
 
   .hero-content {
     top: 120px;
+
     left: 8%;
     right: 8%;
 
@@ -322,15 +1151,207 @@ footer p:last-child {
   .split {
     display: block;
 
-    margin-top: -50px;
+    margin-top: 30px;
   }
 
   .left,
   .right {
     width: 100%;
 
-    min-height: 350px;
+    min-height: 370px;
 
-    background-size: 75%;
+    padding: 35px;
+
+    background-size: 80%;
+  }
+
+  /* Rubriker */
+
+  .section-heading h2 {
+    font-size: 31px;
+  }
+
+  /* Kort */
+
+  .values-grid,
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .value-card:last-child,
+  .why-card:last-child {
+    grid-column: auto;
+  }
+
+  .value-card,
+  .why-card {
+    min-height: 260px;
+  }
+
+  /* Startsida inspiration */
+
+  .home-inspiration {
+    display: block;
+
+    margin: 70px auto;
+  }
+
+  .home-inspiration-text,
+  .home-inspiration-graphic {
+    width: 100%;
+  }
+
+  .home-inspiration-text {
+    padding: 40px 30px;
+  }
+
+  .home-inspiration-graphic {
+    min-height: 280px;
+  }
+
+  .home-inspiration-graphic img {
+    width: 65%;
+  }
+
+  /* CTA */
+
+  .home-cta,
+  .page-cta {
+    display: block;
+
+    margin: 70px auto;
+
+    padding: 40px 30px;
+  }
+
+  .home-cta .button,
+  .page-cta .button {
+    margin-top: 25px;
+  }
+
+  /* Undersida hero */
+
+  .page-hero {
+    width: 90%;
+
+    min-height: 420px;
+
+    margin-bottom: 60px;
+  }
+
+  .page-hero-text {
+    padding: 40px 30px;
+  }
+
+  .page-hero h1 {
+    font-size: 35px;
+  }
+
+  /* Produkter */
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card:last-child {
+    grid-column: auto;
+  }
+
+  /* Inspiration */
+
+  .article-card {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+
+    padding: 25px 5px;
+  }
+
+  .article-number {
+    font-size: 38px;
+  }
+
+  .inspiration-highlight {
+    display: block;
+  }
+
+  .highlight-text,
+  .highlight-shape {
+    width: 100%;
+  }
+
+  .highlight-text {
+    padding: 40px 30px;
+  }
+
+  .highlight-shape {
+    min-height: 280px;
+  }
+
+  /* Om Sundora */
+
+  .about-intro {
+    display: block;
+
+    margin-bottom: 70px;
+  }
+
+  .about-text,
+  .about-graphic {
+    width: 100%;
+  }
+
+  .about-text {
+    margin-bottom: 40px;
+  }
+}
+
+/* Små mobiler */
+
+@media (max-width: 500px) {
+  nav {
+    width: 92%;
+  }
+
+  nav a {
+    font-size: 13px;
+  }
+
+  .hero {
+    height: 520px;
+  }
+
+  .hero-content h2 {
+    font-size: 30px;
+  }
+
+  .page-hero {
+    min-height: 380px;
+  }
+
+  .page-hero h1 {
+    font-size: 30px;
+  }
+
+  .section-heading h2 {
+    font-size: 28px;
+  }
+
+  .value-content,
+  .why-content {
+    padding: 28px;
+  }
+
+  .card-background img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .home-inspiration-text h2 {
+    font-size: 30px;
+  }
+
+  .home-cta h2 {
+    font-size: 29px;
   }
 }
